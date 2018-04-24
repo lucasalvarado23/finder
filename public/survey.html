@@ -252,27 +252,6 @@
           ]
         };
 
-        var currentURL = window.location.origin;
-
-        $.post(currentURL + "/api/friends", userData, function(data) {
-
-          $("#matchName").text(data.name);
-          $("#matchImg").attr("src", data.photo);
-
-          $("#resultsModal").modal("toggle");
-          alert("working");
-        });
-      }
-      else {
-        alert("please fill out all the fields before submitting!")
-      }
-
-      return  false;
-
-    });
-
-
-
   </script>
 
 </body>
