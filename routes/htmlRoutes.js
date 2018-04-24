@@ -1,12 +1,14 @@
 var express = require("express");
 var router = express.Router();
+var path = require("path");
 
-router.get("/survey", (req, res) => {
-	res.sendFile("../public/survey.html")
+function setRoutes(app, rootDir){
+app.get("/survey", (req, res) => {
+	res.sendFile(rootDir + "/public/survey.html")
 })
 
-router.get("*", (req, res) => {
-	res.sendFile("../public/home.js")
+app.get("*", (req, res) => {
+	res.sendFile(rootDir + "/public/home.html")
 })
-
-module.exports = router
+};
+module.exports = {setRoutes}
