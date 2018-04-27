@@ -20,9 +20,12 @@
 </head>
 
 <body>
-
+    
   <div class="container">
 
+    <div class="result">
+    </div>
+<div class="survey">
     <h2>Survey Questions</h2>
     <hr>
 
@@ -184,6 +187,7 @@
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
+    </div>
 
     </div>
   </div>
@@ -248,9 +252,35 @@
             $("#q7").val(),
             $("#q8").val(),
             $("#q9").val(),
-            $("#q10").val()
+            $("#q10").val(),
           ]
-        };
+        }
+
+
+        var currentURL = window.location.origin;
+
+        $.post(currentURL + "/api/friends", userData, function(data) {
+
+          $(".survey").hide();
+          $("#matchName").text(data.name);
+          $("#matchImg").attr("src", data.photo);
+            var l1 = "<h3>" + data.name + "</h3>";
+          var l2 = "<img src=" + data.photo + ">";
+          $(".result").append(l1, l2);
+
+
+
+        });
+      }
+      else {
+        alert("please fill out all the fields before submitting!")
+      }
+
+      return  false;
+
+    });
+
+
 
   </script>
 
